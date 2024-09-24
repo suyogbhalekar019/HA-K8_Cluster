@@ -1,10 +1,10 @@
-# HA K8 Cluster By DevOps Shack
+# HA K8 Cluster
 
-To set up a highly available Kubernetes cluster with two master nodes and three worker nodes without using a cloud load balancer, you can use a virtual machine to act as a load balancer for the API server. Here are the detailed steps for setting up such a cluster:
+To set up a highly available Kubernetes cluster with two master nodes and three worker nodes without using a cloud load balancer or on onprimices, you can use a virtual machine to act as a load balancer for the API server. Here are the detailed steps for setting up such a cluster:
 
 ### Prerequisites
-- 3 master nodes
-- 3 worker nodes
+- Minimum 2 master nodes
+- Minimum 2 worker nodes
 - 1 load balancer node
 - All nodes should be running a Linux distribution like Ubuntu 
 
@@ -148,7 +148,7 @@ By following these steps, you will have a highly available Kubernetes cluster wi
    - Add the stats configuration to `/etc/haproxy/haproxy.cfg`:
      ```haproxy
      listen stats
-         bind *:8404
+         bind *:3005
          mode http
          stats enable
          stats uri /
@@ -162,7 +162,7 @@ By following these steps, you will have a highly available Kubernetes cluster wi
    ```
 
 3. **Check HAProxy Stats:**
-   - Access the stats page at `http://<LOAD_BALANCER_IP>:8404`.
+   - Access the stats page at `http://<LOAD_BALANCER_IP>:3005`.
 
 ### Step 4: Test High Availability
 1. **Simulate Master Node Failure:**
