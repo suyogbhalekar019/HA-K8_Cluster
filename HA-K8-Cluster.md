@@ -4,7 +4,7 @@ To set up a highly available Kubernetes cluster with two master nodes and three 
 
 ### Prerequisites
 - Minimum 2 master nodes
-- Minimum 2 worker nodes
+- Minimum 3 worker nodes
 - 1 load balancer node
 - All nodes should be running a Linux distribution like Ubuntu 
 
@@ -79,7 +79,7 @@ To set up a highly available Kubernetes cluster with two master nodes and three 
    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
    ```
 
-### Step 4: Join the Second & third Master Node
+### Step 4: Join the Second Master Node
 1. **Get the join command and certificate key from the first master node:**
    ```bash
    kubeadm token create --print-join-command --certificate-key $(kubeadm init phase upload-certs --upload-certs | tail -1)
